@@ -12,7 +12,7 @@ class WeatherService {
     if (response.statusCode == 200) {
       return Weather.fromJson(json.decode(response.body));
     } else {
-      return null; // Handle errors gracefully
+      return null; 
     }
   }
 }
