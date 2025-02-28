@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/weather_provider.dart';
+ // Add this import
+import '../providers/local_provider.dart';
 import 'weather_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -27,7 +30,9 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: constraints.maxHeight * 0.05),
                   // Title
                   Text(
-                    "Weather App",
+                    localeProvider.locale.languageCode == 'en'
+                        ? "Weather App"
+                        : "የአየር ሁኔታ መተግበሪያ", // Amharic translation
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
@@ -37,15 +42,17 @@ class HomeScreen extends StatelessWidget {
                   // City Name Input Field
                   TextFormField(
                     controller: _controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter City Name',
+                    decoration: InputDecoration(
+                      hintText: localeProvider.locale.languageCode == 'en'
+                          ? 'Enter City Name'
+                          : 'ከተማ ስም ያስገቡ', // Amharic translation
                       filled: true,
-                      fillColor: Color(0xFFF5FCF9),
-                      contentPadding: EdgeInsets.symmetric(
+                      fillColor: const Color(0xFFF5FCF9),
+                      contentPadding: const EdgeInsets.symmetric(
                         horizontal: 24.0,
                         vertical: 16.0,
                       ),
-                      border: OutlineInputBorder(
+                      border: const OutlineInputBorder(
                         borderSide: BorderSide.none,
                         borderRadius: BorderRadius.all(
                           Radius.circular(50),
@@ -72,7 +79,30 @@ class HomeScreen extends StatelessWidget {
                       minimumSize: const Size(double.infinity, 48),
                       shape: const StadiumBorder(),
                     ),
-                    child: const Text("Get Weather"),
+                    child: Text(
+                      localeProvider.locale.languageCode == 'en'
+                          ? "Get Weather"
+                          : "የአየር ሁኔታ ያግኙ", // Amharic translation
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  // Language Toggle Button
+                  ElevatedButton(
+                    onPressed: () {
+                      localeProvider.toggleLanguage();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: Colors.grey[300],
+                      foregroundColor: Colors.black,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: const StadiumBorder(),
+                    ),
+                    child: Text(
+                      localeProvider.locale.languageCode == 'en'
+                          ? "አማርኛ"
+                          : "English",
+                    ),
                   ),
                 ],
               ),

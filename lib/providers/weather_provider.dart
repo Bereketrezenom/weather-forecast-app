@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forecast_app/location.dart';
+
+
+import '../location.dart';
 import '../models/weather.dart';
 import '../services/weather_service.dart';
 
