@@ -1,16 +1,23 @@
-# weather_forecast_app
+# Weather Forecast App
 
-A new Flutter project.
+A Flutter-based mobile application that provides weather information for any given city. The app fetches weather data from the OpenWeatherMap API and displays the current weather, including temperature and weather description.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Search for weather data by entering a city name.
+- Displays the city's name, current temperature (in Celsius), and weather description.
+- Uses the OpenWeatherMap API for fetching weather data.
+- State management with `Provider` and `ChangeNotifier`.
+- Implements service locator (`GetIt`) for dependency injection.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: The main framework for building the app.
+- **Provider**: For state management.
+- **GetIt**: For dependency injection.
+- **OpenWeatherMap API**: For fetching weather data.
+- **HTTP**: For making network requests to the API.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
